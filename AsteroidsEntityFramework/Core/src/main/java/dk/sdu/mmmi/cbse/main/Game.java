@@ -52,6 +52,8 @@ public class Game
         for (IGamePluginService iGamePlugin : entityPlugins) {
             iGamePlugin.start(gameData, world);
         }
+        
+        
     }
 
     @Override

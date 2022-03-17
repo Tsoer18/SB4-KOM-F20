@@ -4,12 +4,17 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import dk.sdu.mmmi.cbse.entities.Player;
 import dk.sdu.mmmi.cbse.managers.GameKeys;
 import dk.sdu.mmmi.cbse.managers.GameStateManager;
+import dk.sdu.mmmi.cbse.entities.Enemy;
 
 public class PlayState extends GameState {
 	
 	private ShapeRenderer sr;
+        
+        private ShapeRenderer srEnemy;
 	
 	private Player player;
+        
+        private Enemy enemy;
 	
 	public PlayState(GameStateManager gsm) {
 		super(gsm);
@@ -20,6 +25,10 @@ public class PlayState extends GameState {
 		sr = new ShapeRenderer();
 		
 		player = new Player();
+                
+                srEnemy = new ShapeRenderer();
+                
+                enemy = new Enemy();
 		
 	}
 	
@@ -28,11 +37,13 @@ public class PlayState extends GameState {
 		handleInput();
 		
 		player.update(dt);
+                enemy.update(dt);
 		
 	}
 	
 	public void draw() {
 		player.draw(sr);
+                enemy.draw(srEnemy);
 	}
 	
 	public void handleInput() {
